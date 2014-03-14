@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @activity_photo.title %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= image_tag @activity_photo.file.public_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_activity_photo_path(@activity_photo) %> |
+<%= link_to 'Back', activity_photos_path %>

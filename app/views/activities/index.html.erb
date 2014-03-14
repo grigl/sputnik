@@ -1,0 +1,31 @@
+<h1>Listing activities</h1>
+
+<table>
+  <tr>
+    <th>List</th>
+    <th>Lead text</th>
+    <th>Full text</th>
+    <th>Features</th>
+    <th>Video</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @activities.each do |activity| %>
+  <tr>
+    <td><%= activity.list_id %></td>
+    <td><%= activity.lead_text %></td>
+    <td><%= activity.full_text %></td>
+    <td><%= activity.features %></td>
+    <td><%= activity.video %></td>
+    <td><%= link_to 'Show', activity %></td>
+    <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+    <td><%= link_to 'Destroy', activity, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Activity', new_activity_path %>

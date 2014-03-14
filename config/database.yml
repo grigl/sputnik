@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  database: sptnk_development
+  pool: 5
+  timeout: 5000
+  username: postgres
+  password: postgres
+
+test:
+  adapter: postgresql
+  database: sptnk_test
+  pool: 5
+  timeout: 5000
+  username: postgres
+  password: postgres
+
+production:
+  adapter: postgresql
+  database: sptnk_production
+  pool: 5
+  timeout: 5000

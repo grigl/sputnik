@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>List:</b>
+  <%= @activity.list_id %>
+</p>
+
+<p>
+  <b>Lead text:</b>
+  <%= @activity.lead_text %>
+</p>
+
+<p>
+  <b>Full text:</b>
+  <%= @activity.full_text %>
+</p>
+
+<p>
+  <b>Features:</b>
+  <%= @activity.features %>
+</p>
+
+<p>
+  <b>Video:</b>
+  <%= @activity.video %>
+</p>
+
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

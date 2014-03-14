@@ -1,0 +1,37 @@
+<%= form_for(@activity) do |f| %>
+  <% if @activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @activity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :list_id %><br />
+    <%= f.number_field :list_id %>
+  </div>
+  <div class="field">
+    <%= f.label :lead_text %><br />
+    <%= f.text_area :lead_text %>
+  </div>
+  <div class="field">
+    <%= f.label :full_text %><br />
+    <%= f.text_area :full_text %>
+  </div>
+  <div class="field">
+    <%= f.label :features %><br />
+    <%= f.text_area :features %>
+  </div>
+  <div class="field">
+    <%= f.label :video %><br />
+    <%= f.text_field :video %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
