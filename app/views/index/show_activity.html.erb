@@ -1,0 +1,7 @@
+<h2><%= t '.title' %></h2>
+
+<%= @activity.lead_text %>
+
+<% for photo in @activity.activity_photos %>
+    <%= image_tag photo.file.public_url %>
+<% end %>

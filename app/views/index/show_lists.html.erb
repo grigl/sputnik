@@ -1,1 +1,5 @@
 <h2><%= t '.title' %></h2>
+
+<% for list in @lists %>
+    <% list.title %> <%= link_to list.title, show_list_path(list) %>
+<% end %>

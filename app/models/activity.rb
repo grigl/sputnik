@@ -16,7 +16,7 @@ class Activity < ActiveRecord::Base
   belongs_to :list
   has_many :activity_photos
 
-  attr_accessible :lead_text, :full_text, :features, :video
+  attr_accessible :lead_text, :full_text, :features, :video, :list_id
 
   translates :lead_text, :full_text, :features
 end

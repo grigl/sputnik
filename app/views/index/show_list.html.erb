@@ -1,0 +1,5 @@
+<h2><%= t '.title' %></h2>
+
+<% for activity in @list.activities %>
+    <%= activity.lead_text %> <%= link_to 'show', show_activity_path(activity) %>
+<% end %>
