@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140314004601) do
+ActiveRecord::Schema.define(:version => 20140314140414) do
 
   create_table "activities", :force => true do |t|
     t.integer  "list_id"
@@ -23,12 +23,49 @@ ActiveRecord::Schema.define(:version => 20140314004601) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "activity_photo_translations", :force => true do |t|
+    t.integer  "activity_photo_id"
+    t.string   "locale",            :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "title"
+  end
+
+  add_index "activity_photo_translations", ["activity_photo_id"], :name => "index_activity_photo_translations_on_activity_photo_id"
+  add_index "activity_photo_translations", ["locale"], :name => "index_activity_photo_translations_on_locale"
+
   create_table "activity_photos", :force => true do |t|
     t.string   "file"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "title"
+    t.integer  "activity_id"
+  end
+
+  create_table "activity_translations", :force => true do |t|
+    t.integer  "activity_id"
+    t.string   "locale",      :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "lead_text"
+    t.text     "full_text"
+    t.text     "features"
+  end
+
+  add_index "activity_translations", ["activity_id"], :name => "index_activity_translations_on_activity_id"
+  add_index "activity_translations", ["locale"], :name => "index_activity_translations_on_locale"
+
+  create_table "list_translations", :force => true do |t|
+    t.integer  "list_id"
+    t.string   "locale",     :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "title"
+    t.text     "lead_text"
   end
+
+  add_index "list_translations", ["list_id"], :name => "index_list_translations_on_list_id"
+  add_index "list_translations", ["locale"], :name => "index_list_translations_on_locale"
 
   create_table "lists", :force => true do |t|
     t.string   "title"

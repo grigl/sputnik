@@ -14,4 +14,6 @@ class List < ActiveRecord::Base
 
   attr_accessible :title, :lead_text, :photo
   is_uploadcare_file :photo
+
+  translates :title, :lead_text
 end

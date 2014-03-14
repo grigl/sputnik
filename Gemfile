@@ -46,7 +46,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 # Globalize3 gem for internationalization
-gem 'globalize'
+gem 'globalize', '~> 3.1.0'
 
 # uploadcare for photos
 gem 'uploadcare-rails'

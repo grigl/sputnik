@@ -12,6 +12,8 @@
 class ActivityPhoto < ActiveRecord::Base
   belongs_to :activity
 
-  attr_accessible :title, :file
+  attr_accessible :title, :file, :activity_id
   is_uploadcare_file :file
+
+  translates :title
 end

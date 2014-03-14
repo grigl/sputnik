@@ -1,4 +1,6 @@
 class ActivityPhotosController < AdminController
+  before_filter :get_activities, only: [:new, :edit]
+
   # GET /activity_photos
   # GET /activity_photos.json
   def index
@@ -79,5 +81,11 @@ class ActivityPhotosController < AdminController
       format.html { redirect_to activity_photos_url }
       format.json { head :no_content }
     end
+  end
+
+private
+
+  def get_activities
+    @activities = Activity.all.map {|act| [act.lead_text[0..15], act.id]}
   end
 end

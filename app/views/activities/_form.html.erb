@@ -10,10 +10,11 @@
       </ul>
     </div>
   <% end %>
+  
 
   <div class="field">
-    <%= f.label :list_id %><br />
-    <%= f.number_field :list_id %>
+    <%= f.label :list %><br />
+    <%= f.select :list_id, @lists %>
   </div>
   <div class="field">
     <%= f.label :lead_text %><br />

@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+
+  index:
+    show_lists:
+        title: 'Show Lists'

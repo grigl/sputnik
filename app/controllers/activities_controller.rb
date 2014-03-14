@@ -1,4 +1,6 @@
 class ActivitiesController < AdminController
+  before_filter :get_lists, only: [:new, :edit]
+
   # GET /activities
   # GET /activities.json
   def index
@@ -79,5 +81,11 @@ class ActivitiesController < AdminController
       format.html { redirect_to activities_url }
       format.json { head :no_content }
     end
+  end
+
+private
+
+  def get_lists
+    @lists = List.all.map {|list| [list.title, list.id]}
   end
 end
