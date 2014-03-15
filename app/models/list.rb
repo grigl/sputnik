@@ -7,6 +7,7 @@
 #  lead_text  :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  photo      :string(255)
 #
 
 class List < ActiveRecord::Base

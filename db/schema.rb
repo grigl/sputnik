@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140314140414) do
+ActiveRecord::Schema.define(:version => 20140315105342) do
 
   create_table "activities", :force => true do |t|
     t.integer  "list_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20140314140414) do
     t.string   "video"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "title"
   end
 
   create_table "activity_photo_translations", :force => true do |t|
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20140314140414) do
     t.string   "locale",      :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "title"
     t.text     "lead_text"
     t.text     "full_text"
     t.text     "features"

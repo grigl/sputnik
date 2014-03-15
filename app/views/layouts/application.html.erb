@@ -7,10 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to 'En', locale: 'en' %>
-<%= link_to 'Ru', locale: 'ru' %>
+    <div class="container">
+        <%= link_to 'En', locale: 'en' %>
+        <%= link_to 'Ru', locale: 'ru' %>
 
-<%= yield %>
-
+        <%= yield %>
+    </div>
 </body>
 </html>

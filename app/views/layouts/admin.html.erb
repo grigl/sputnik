@@ -8,10 +8,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to 'En', locale: 'en' %>
-<%= link_to 'Ru', locale: 'ru' %>
+    <div class="container">
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+                <%= link_to 'Sputnik Admin', admin_path, class: 'navbar-brand' %>
+            </div>
+            
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><%= link_to 'Списки экскурсий', lists_path %></li>
+                    <li><%= link_to 'Экскурсии', activities_path %></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><%= link_to 'En', locale: 'en' %></li>
+                    <li><%= link_to 'Ru', locale: 'ru' %></li>
+                </ul>
+            </div>
+        </div>
 
-<%= yield %>
-
+        <%= yield %>
+    </div>
 </body>
 </html>

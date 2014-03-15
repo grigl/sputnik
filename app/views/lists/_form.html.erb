@@ -1,4 +1,4 @@
-<%= form_for(@list) do |f| %>
+<%= form_for @list, html: { class: 'form' } do |f| %>
   <% if @list.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <div class="field form-group">
+    <%= f.label 'Название' %><br />
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :lead_text %><br />
-    <%= f.text_area :lead_text %>
+  <div class="field form-group">
+    <%= f.label 'Описание' %><br />
+    <%= f.text_area :lead_text, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :photo %><br />
+  <div class="field form-group">
+    <%= f.label 'Обложка' %><br />
     <%= f.uploadcare_uploader_field :photo %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Сохранить', class: 'btn btn-default' %>
   </div>
 <% end %>

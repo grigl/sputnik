@@ -4,7 +4,7 @@ Sputnik::Application.routes.draw do
     match 'activity_list/:id' => 'index#show_list', as: 'show_list'
     match 'activity/:id' => 'index#show_activity', as: 'show_activity'
 
-    match '/admin' => 'admin#index'
+    match '/admin' => 'admin#index', as: 'admin'
     scope '/admin' do
       resources :lists, :activities, :activity_photos
     end

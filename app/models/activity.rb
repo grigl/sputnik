@@ -10,6 +10,7 @@
 #  video      :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  title      :string(255)
 #
 
 class Activity < ActiveRecord::Base
@@ -18,5 +19,5 @@ class Activity < ActiveRecord::Base
 
   attr_accessible :lead_text, :full_text, :features, :video, :list_id
 
-  translates :lead_text, :full_text, :features
+  translates :lead_text, :full_text, :features, :title
 end
