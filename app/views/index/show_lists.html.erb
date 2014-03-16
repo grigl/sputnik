@@ -1,5 +1,15 @@
-<h2><%= t '.title' %></h2>
+<h2>Списки экскурсий</h2>
 
 <% for list in @lists %>
-    <% list.title %> <%= link_to list.title, show_list_path(list) %>
+    <div class="row">
+        <div class="col-md-4">
+            <%= link_to show_list_path(list) do %>
+                <%= image_tag list.photo.cdn_url("scale_crop/300x200"), class: 'img-thumbnail' %>
+            <% end %>
+        </div>
+        <div class="col-md-8">
+            <b><%= link_to list.title, show_list_path(list) %></b>
+            <p><%= list.lead_text %></p>
+        </div>
+    </div>
 <% end %>

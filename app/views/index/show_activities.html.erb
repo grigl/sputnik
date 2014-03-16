@@ -1,14 +1,6 @@
-<div class="center">
-    <%= image_tag @list.photo.cdn_url("scale_crop/800x200"), class: 'img-center img-thumbnail' %>    
-</div>
+<h2>Все экскурсии</h2>
 
-<div class="section well">
-    <b><%= @list.title %></b>
-    <p><%= @list.lead_text %></p>
-</div>
-
-<h3>Экскурсии, которые входят в этот список:</h3>
-<% for activity in @list.activities %>
+<% for activity in @activities %>
     <div class="row">
         <div class="col-md-4">
             <%= link_to show_activity_path(activity) do %>

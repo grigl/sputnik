@@ -1,3 +1,19 @@
 body {
     padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.img-center, .center {
+    display: block;
+    margin: 0 auto;
 }

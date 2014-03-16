@@ -7,6 +7,10 @@ class IndexController < ApplicationController
     @list = List.find(params[:id])
   end
 
+  def show_activities
+    @activities = Activity.all
+  end
+
   def show_activity
     @activity = Activity.find(params[:id])
   end

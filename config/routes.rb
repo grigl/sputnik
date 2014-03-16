@@ -2,6 +2,7 @@ Sputnik::Application.routes.draw do
   scope '(:locale)', locale: /en|ru/ do
     root :to => 'index#show_lists', as: 'show_lists'
     match 'activity_list/:id' => 'index#show_list', as: 'show_list'
+    match 'activities' => 'index#show_activities', as: 'show_activities'
     match 'activity/:id' => 'index#show_activity', as: 'show_activity'
 
     match '/admin' => 'admin#index', as: 'admin'

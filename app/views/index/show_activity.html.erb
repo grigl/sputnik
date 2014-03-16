@@ -1,7 +1,43 @@
-<h2><%= t '.title' %></h2>
+<div id="carousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% @activity.activity_photos.each_with_index do |photo, idx| %>
+        <li data-target="#carousel" data-slide-to="<%= idx %>" <% if idx == 0 %>class="active"<% end %>></li>
+    <% end %>
+  </ol>
 
-<%= @activity.lead_text %>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <% @activity.activity_photos.each_with_index do |photo, idx| %>
+    <div class="item<% if idx == 0 %> active<% end %>">
+      <%= image_tag photo.file.cdn_url("scale_crop/800x400"), class: 'img-center' %>
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    <% end %>
+  </div>
 
-<% for photo in @activity.activity_photos %>
-    <%= image_tag photo.file.public_url %>
-<% end %>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+<h3><%= @activity.title %></h3>
+
+<div class="section well">
+    <%= @activity.full_text %>
+</div>
+
+<div class="section well">
+    <b>Особенности экскурсии</b>
+    <p><%= @activity.features %></p>
+</div>
+
+<div class="section well">
+    <iframe src="//player.vimeo.com/video/<%= @activity.video %>" class="center" width="1000" height="625" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
