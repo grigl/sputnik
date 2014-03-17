@@ -7,6 +7,8 @@ jQuery(function() {
   $('.photos').on('click', '.add-photo-link', function(e){
     e.preventDefault();
     var partial = $(this).data('partial');
+    partial = partial.replace('activity[activity_photos_attributes][', 'activity[activity_photos_attributes][' + Date.now());
+    partial = partial.replace('activity_activity_photos_attributes_', 'activity_activity_photos_attributes_' + Date.now());
     $('.photos-box').append(partial);
   });
 

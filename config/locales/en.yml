@@ -4,6 +4,20 @@
 en:
   hello: "Hello world"
 
+  layouts:
+    application:
+        lists: 'Activity lists'
+        activities: 'All activities'
+
   index:
     show_lists:
-        title: 'Show Lists'
+        title: 'All activity lists'
+
+    show_list:
+        activities_title: 'Activities in this list:'
+
+    show_activities:
+        title: 'All activities'
+
+    show_activity:
+        activity_features: 'Activity features:'

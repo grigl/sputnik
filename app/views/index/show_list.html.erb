@@ -7,7 +7,8 @@
     <p><%= @list.lead_text %></p>
 </div>
 
-<h3>Экскурсии, которые входят в этот список:</h3>
+<h3><%= t '.activities_title' %></h3>
+
 <% for activity in @list.activities %>
     <div class="row">
         <div class="col-md-4">
