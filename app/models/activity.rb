@@ -3,7 +3,6 @@
 # Table name: activities
 #
 #  id            :integer          not null, primary key
-#  list_id       :integer
 #  lead_text     :text
 #  full_text     :text
 #  features      :text
@@ -15,12 +14,19 @@
 #
 
 class Activity < ActiveRecord::Base
-  belongs_to :list
+  attr_accessor :lists_params
+  
+  has_and_belongs_to_many :lists
   has_many :activity_photos
 
-  attr_accessible :lead_text, :full_text, :features, :video, :list_id, :title
+  accepts_nested_attributes_for :activity_photos, allow_destroy: true
+  accepts_nested_attributes_for :lists
+
+  attr_accessible :lead_text, :full_text, :features, :video, :list_id, :title, 
+                  :activity_photos_attributes, :translations_attributes, :lists_params
 
   translates :lead_text, :full_text, :features, :title
+  accepts_nested_attributes_for :translations
 
   def main_photo
     if self.activity_photos

@@ -10,20 +10,47 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="col-md-6">
+    <div class="field form-group">
+      <%= f.label 'Название (english)' %><br />
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+  </div>
 
-  <div class="field form-group">
-    <%= f.label 'Название' %><br />
-    <%= f.text_field :title, class: 'form-control' %>
+  <div class="col-md-6">
+    <%= f.globalize_fields_for :ru do |f_ru| %>
+    <div class="field form-group">
+      <%= f_ru.label 'Название (русский)' %><br />
+      <%= f_ru.text_field :title, class: 'form-control' %>
+      </div>
+    <% end %>
   </div>
-  <div class="field form-group">
-    <%= f.label 'Описание' %><br />
-    <%= f.text_area :lead_text, class: 'form-control' %>
+
+  <div class="col-md-6">
+    <div class="field form-group">
+      <%= f.label 'Описание (english)' %><br />
+      <%= f.text_area :lead_text, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field form-group">
-    <%= f.label 'Обложка' %><br />
-    <%= f.uploadcare_uploader_field :photo %>
+
+  <div class="col-md-6">
+    <%= f.globalize_fields_for :ru do |f_ru| %>
+    <div class="field form-group">
+      <%= f_ru.label 'Описание (русский)' %><br />
+      <%= f_ru.text_area :lead_text, class: 'form-control' %>
+    </div>
+    <% end %>
   </div>
-  <div class="actions">
-    <%= f.submit 'Сохранить', class: 'btn btn-default' %>
+
+  <div class="col-md-12">
+    <div class="field form-group">
+      <%= f.label 'Обложка' %><br />
+      <%= f.uploadcare_uploader_field :photo %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Сохранить', class: 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

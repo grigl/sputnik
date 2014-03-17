@@ -11,7 +11,7 @@
 #
 
 class List < ActiveRecord::Base
-  has_many :activities
+  has_and_belongs_to_many :activities
 
   attr_accessible :title, :lead_text, :photo
   is_uploadcare_file :photo

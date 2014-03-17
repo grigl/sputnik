@@ -45,7 +45,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-# Globalize3 gem for internationalization
+# Globalize3 gem and batch_translation gem for internationalization
 gem 'globalize', '~> 3.1.0'
 
 # uploadcare for photos

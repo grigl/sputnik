@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140316175558) do
+ActiveRecord::Schema.define(:version => 20140317164726) do
 
   create_table "activities", :force => true do |t|
-    t.integer  "list_id"
     t.text     "lead_text"
     t.text     "full_text"
     t.text     "features"
@@ -23,6 +22,11 @@ ActiveRecord::Schema.define(:version => 20140316175558) do
     t.datetime "updated_at",    :null => false
     t.string   "title"
     t.integer  "main_photo_id"
+  end
+
+  create_table "activities_lists", :id => false, :force => true do |t|
+    t.integer "activity_id"
+    t.integer "list_id"
   end
 
   create_table "activity_photo_translations", :force => true do |t|

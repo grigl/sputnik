@@ -17,3 +17,13 @@ body {
     display: block;
     margin: 0 auto;
 }
+
+.ucare-box, .list-box {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.list-box {
+    margin-left: 15px;
+}

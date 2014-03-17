@@ -11,31 +11,124 @@
     </div>
   <% end %>
   
-  <div class="field form-group">
-    <%= f.label 'Название' %><br />
-    <%= f.text_field :title, class: 'form-control' %>
+  <div class="col-md-6">
+    <div class="field form-group">
+      <%= f.label 'Название (english)' %><br />
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field form-group">
-    <%= f.label 'В списке экскурсий' %><br />
-    <%= f.select :list_id, @lists, { include_blank: 'Не входит в списки' }, { class: 'form-control' } %>
+
+  <div class="col-md-6">
+    <%= f.globalize_fields_for :ru do |f_ru| %>
+    <div class="field form-group">
+      <%= f_ru.label 'Название (русский)' %><br />
+      <%= f_ru.text_field :title, class: 'form-control' %>
+      </div>
+    <% end %>
   </div>
-  <div class="field form-group">
-    <%= f.label 'Описание' %><br />
-    <%= f.text_area :lead_text, class: 'form-control' %>
+  
+
+  <div class="col-md-12">
+    <div class="field form-group lists">
+      <%= f.label 'В списках экскурсий' %><br />
+
+      <div class="lists-box">
+        <% if @activity.lists.present? %>
+          <% for list in @activity.lists %>
+            <%= fields_for 'activity[lists_params][]', list do |ff| %>
+              <div class="list-box">
+                <h4><%= link_to ff.object.title, list_path(ff.object) %> 
+                    <%= link_to 'Удалить из списка', '#', class: 'btn btn-warning btn-xs btn-remove' %></h4>
+                <%= ff.hidden_field :_destroy, class: "destroy" %>
+                <%= ff.hidden_field :id %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%= link_to 'Добавить в список', '#', 
+                                       remote: true, 
+                                       class: 'add-to-list-link btn btn-primary btn-xs', 
+                                       data: { partial: render('add_to_list', f: f).gsub('\n','') } %>
+    </div>
   </div>
-  <div class="field form-group">
-    <%= f.label 'Полный текст' %><br />
-    <%= f.text_area :full_text, class: 'form-control' %>
+  
+  <div class="col-md-6">
+    <div class="field form-group">
+      <%= f.label 'Описание (english)' %><br />
+      <%= f.text_area :lead_text, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field form-group">
-    <%= f.label 'Особенности экскурсии' %><br />
-    <%= f.text_area :features, class: 'form-control' %>
+
+  <div class="col-md-6">
+    <%= f.globalize_fields_for :ru do |f_ru| %>
+    <div class="field form-group">
+      <%= f_ru.label 'Описание (русский)' %><br />
+      <%= f_ru.text_area :lead_text, class: 'form-control' %>
+    </div>
+    <% end %>
   </div>
-  <div class="field form-group">
-    <%= f.label 'ID видео на вимео' %><br />
-    <%= f.text_field :video, class: 'form-control' %>
+
+  <div class="col-md-6">
+    <div class="field form-group">
+      <%= f.label 'Полный текст (english)' %><br />
+      <%= f.text_area :full_text, class: 'form-control' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit 'Сохранить', class: 'btn btn-default' %>
+
+  <div class="col-md-6">
+    <%= f.globalize_fields_for :ru do |f_ru| %>
+    <div class="field form-group">
+      <%= f_ru.label 'Полный текст (русский)' %><br />
+      <%= f_ru.text_area :full_text, class: 'form-control' %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <div class="field form-group">
+      <%= f.label 'Особенности экскурсии (english)' %><br />
+      <%= f.text_area :features, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <%= f.globalize_fields_for :ru do |f_ru| %>
+    <div class="field form-group">
+      <%= f_ru.label 'Особенности экскурсии (русский)' %><br />
+      <%= f_ru.text_area :features, class: 'form-control' %>
+    </div>
+    <% end %>
+  </div>
+    
+  <div class="col-md-12">
+    <div class="field form-group">
+      <%= f.label 'ID видео на вимео' %><br />
+      <%= f.text_field :video, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group photos col-md-12">
+    <%= f.label 'Фотографии' %><br />
+    
+    <div class="photos-box">
+      <%= f.fields_for :activity_photos do |ff| %>
+        <div class="ucare-box">
+          <%= ff.hidden_field :_destroy, class: 'destroy' %>
+          <%= ff.uploadcare_uploader_field :file %>
+        </div>
+      <% end %>
+    </div>
+    
+    <br>
+    <%= link_to 'Добавить фотографию', '#', 
+                                       remote: true, 
+                                       class: 'add-photo-link btn btn-primary btn-xs', 
+                                       data: { partial: render('new_photo', f: f).gsub('\n','') } %>
+  </div>
+
+  <div class="actions col-md-12">
+    <%= f.submit 'Сохранить экскурсию', class: 'btn btn-default' %>
   </div>
 <% end %>

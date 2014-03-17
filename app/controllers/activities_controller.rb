@@ -1,5 +1,6 @@
 class ActivitiesController < AdminController
   before_filter :get_lists, only: [:new, :edit]
+  after_filter :save_lists, only: [:create, :update]
 
   # GET /activities
   # GET /activities.json
@@ -87,5 +88,19 @@ private
 
   def get_lists
     @lists = List.all.map {|list| [list.title, list.id]}
+  end
+
+  def save_lists
+    if params[:activity][:lists_params]
+      activity = Activity.find(params[:id])
+
+      params[:activity][:lists_params].each do |list_param|
+        list = List.find(list_param[1][:id])
+        activity.lists << list if !activity.lists.include?(list)
+        if list_param[1][:_destroy] && list_param[1][:_destroy] == "1"
+          activity.lists.destroy(list)
+        end
+      end
+    end
   end
 end

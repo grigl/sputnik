@@ -2,13 +2,14 @@ Sputnik::Application.routes.draw do
   scope '(:locale)', locale: /en|ru/ do
     root :to => 'index#show_lists', as: 'show_lists'
     match 'activity_list/:id' => 'index#show_list', as: 'show_list'
+
     match 'activities' => 'index#show_activities', as: 'show_activities'
     match 'activity/:id' => 'index#show_activity', as: 'show_activity'
+  end
 
-    match '/admin' => 'admin#index', as: 'admin'
-    scope '/admin' do
-      resources :lists, :activities, :activity_photos
-    end
+  match '/admin' => 'admin#index', as: 'admin'
+  scope '/admin' do
+    resources :lists, :activities, :activity_photos
   end
 
   # The priority is based upon order of creation:

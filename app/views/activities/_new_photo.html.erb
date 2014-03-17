@@ -1,0 +1,5 @@
+<%= f.fields_for :activity_photos, @activity.activity_photos.new do |ff| %>
+    <div class="ucare-box">
+        <%= ff.uploadcare_uploader_field :file %>
+    </div>
+<% end %>
