@@ -1,5 +1,6 @@
 <%= f.fields_for :activity_photos, @activity.activity_photos.new do |ff| %>
-    <div class="ucare-box">
+    <div class="ucare-box well well-sm">
         <%= ff.uploadcare_uploader_field :file %>
+        Является обложкой: <%= ff.check_box :is_main, class: 'is-main-checkbox' %>
     </div>
 <% end %>
