@@ -8,6 +8,7 @@
 #  updated_at  :datetime         not null
 #  title       :string(255)
 #  activity_id :integer
+#  is_main     :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

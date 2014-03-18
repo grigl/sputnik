@@ -24,4 +24,11 @@ jQuery(function() {
     $(this).parents('.list-box').find('.destroy').val('1');
     $(this).parents('.list-box').hide();
   });
+
+  $('.is-main-checkbox').on('change', function(){
+    if($(this).is(':checked')){
+      $('.is-main-checkbox').prop('checked', false);
+      $(this).prop('checked', true);
+    };
+  });
 });

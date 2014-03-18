@@ -18,12 +18,12 @@ body {
     margin: 0 auto;
 }
 
-.ucare-box, .list-box {
+.ucare-box, .list-box, .activity-box {
     display: inline-block;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.list-box {
+.list-box, .activity-box {
     margin-left: 15px;
 }

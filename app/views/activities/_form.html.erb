@@ -1,7 +1,7 @@
 <%= form_for @activity, class: 'form' do |f| %>
   <% if @activity.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+      <h2>При попытке сохранить форму были ошибки:</h2>
 
       <ul>
       <% @activity.errors.full_messages.each do |msg| %>
@@ -25,8 +25,7 @@
       <%= f_ru.text_field :title, class: 'form-control' %>
       </div>
     <% end %>
-  </div>
-  
+  </div>  
 
   <div class="col-md-12">
     <div class="field form-group lists">
@@ -114,9 +113,10 @@
     
     <div class="photos-box">
       <%= f.fields_for :activity_photos do |ff| %>
-        <div class="ucare-box">
+        <div class="ucare-box well well-sm">
           <%= ff.hidden_field :_destroy, class: 'destroy' %>
           <%= ff.uploadcare_uploader_field :file %>
+          Является обложкой: <%= ff.check_box :is_main, class: 'is-main-checkbox' %>
         </div>
       <% end %>
     </div>

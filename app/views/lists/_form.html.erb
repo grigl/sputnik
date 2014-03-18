@@ -48,7 +48,35 @@
       <%= f.label 'Обложка' %><br />
       <%= f.uploadcare_uploader_field :photo %>
     </div>
+  </div>
 
+  <div class="col-md-12">
+    <div class="field form-group activities">
+      <%= f.label 'Экскурсии' %><br />
+
+      <div class="activities-box">
+        <% if @list.activities.present? %>
+          <% for activity in @list.activities %>
+            <%= fields_for 'list[activities_params][]', activity do |ff| %>
+              <div class="activity-box">
+                <h4><%= link_to ff.object.title, activity_path(ff.object) %> 
+                    <%= link_to 'Удалить из списка', '#', class: 'btn btn-warning btn-xs btn-remove' %></h4>
+                <%= ff.hidden_field :_destroy, class: "destroy" %>
+                <%= ff.hidden_field :id %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%= link_to 'Добавить экскурсию', '#', 
+                                       remote: true, 
+                                       class: 'add-activity-link btn btn-primary btn-xs', 
+                                       data: { partial: render('add_to_list', f: f).gsub('\n','') } %>
+    </div>
+  </div>
+
+  <div class="col-md-12">
     <div class="actions">
       <%= f.submit 'Сохранить', class: 'btn btn-default' %>
     </div>

@@ -1,18 +1,23 @@
 ru:
-    layouts:
-        application:
-            lists: 'Списки экскурсий'
-            activities: 'Все экскурсии'
+  layouts:
+    application:
+      lists: 'Списки экскурсий'
+      activities: 'Все экскурсии'
 
-    index:
-        show_lists:
-            title: 'Списки экскурсий'
+  index:
+    show_lists:
+      title: 'Списки экскурсий'
 
-        show_list:
-            activities_title: 'Экскурсии в этом списке:'
+    show_list:
+      activities_title: 'Экскурсии в этом списке:'
 
-        show_activities:
-            title: 'Все экскурсии'
+    show_activities:
+      title: 'Все экскурсии'
 
-        show_activity:
-            activity_features: 'Особенности экскурсии:'
+    show_activity:
+      activity_features: 'Особенности экскурсии:'
+
+  list_created: 'Список успешно создан'
+  list_updated: 'Список успешно изменен'
+  activity_created: 'Экскурссия успешно создана'
+  activity_updated: 'Экскурсия успешно изменена'

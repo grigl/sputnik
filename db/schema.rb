@@ -11,17 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140317164726) do
+ActiveRecord::Schema.define(:version => 20140318004845) do
 
   create_table "activities", :force => true do |t|
     t.text     "lead_text"
     t.text     "full_text"
     t.text     "features"
     t.string   "video"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "title"
-    t.integer  "main_photo_id"
   end
 
   create_table "activities_lists", :id => false, :force => true do |t|
@@ -46,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20140317164726) do
     t.datetime "updated_at",  :null => false
     t.string   "title"
     t.integer  "activity_id"
+    t.boolean  "is_main"
   end
 
   create_table "activity_translations", :force => true do |t|

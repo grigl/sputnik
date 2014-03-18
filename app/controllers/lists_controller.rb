@@ -1,4 +1,7 @@
 class ListsController < AdminController
+  before_filter :get_activities, only: [:new, :edit]
+  after_filter :save_activities, only: [:create, :update]
+
   # GET /lists
   # GET /lists.json
   def index
@@ -44,7 +47,7 @@ class ListsController < AdminController
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to @list, notice: 'List was successfully created.' }
+        format.html { redirect_to @list, notice: t('.list_created') }
         format.json { render json: @list, status: :created, location: @list }
       else
         format.html { render action: "new" }
@@ -60,7 +63,7 @@ class ListsController < AdminController
 
     respond_to do |format|
       if @list.update_attributes(params[:list])
-        format.html { redirect_to @list, notice: 'List was successfully updated.' }
+        format.html { redirect_to @list, notice: t('.activity_updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -78,6 +81,26 @@ class ListsController < AdminController
     respond_to do |format|
       format.html { redirect_to lists_url }
       format.json { head :no_content }
+    end
+  end
+
+private
+
+  def get_activities
+    @activities = Activity.all.map {|activity| [activity.title, activity.id]}
+  end
+
+  def save_activities
+    if params[:list][:activities_params]
+      list = List.find(params[:id])
+
+      params[:list][:activities_params].each do |act_param|
+        activity = Activity.find(act_param[1][:id])
+        list.activities << activity if !list.activities.include?(activity)
+        if act_param[1][:_destroy] && act_param[1][:_destroy] == "1"
+          list.activities.destroy(activity)
+        end
+      end
     end
   end
 end
